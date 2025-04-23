@@ -74,7 +74,7 @@ if (isset($_SESSION["success_data"])) {
                                 <label class="text-gray-400">
                                     สามารถดูสถานะคำขอได้
                                 </label>
-                                <a href="/system_req" class="text-primary"> กดที่นี่</a>
+                                <a href="./check_status.php" class="text-primary"> กดที่นี่</a>
                             </div>
                         </div>
                     </div>

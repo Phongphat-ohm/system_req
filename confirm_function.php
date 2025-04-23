@@ -34,7 +34,7 @@ if (!isset($_SESSION["private_data"])) {
     $account_expire_date = $account_detail["account_deatil_date"];
 
     if (isset($id_card) && isset($name_th) && isset($name_en) && isset($birthdate) && isset($position) && isset($department) && isset($license_no) && isset($phone) && isset($email) && isset($username) && isset($password)) {
-        $query = "INSERT INTO `wifi_requests` (`id_card`, `name_th`, `name_en`, `birthdate`, `position`, `department`, `license_no`, `phone`, `email`, `username`, `password_hash`, `account_type`, `account_detail`, `expire_date`) VALUES ('$id_card', '$name_th', '$name_en', '$birthdate', '$position', '$department', '$license_no', '$phone', '$email', '$username', '$password', '$account_type', '$account_detail_db', '$account_expire_date')";
+        $query = "INSERT INTO `wifi_requests` (`id_card`, `name_th`, `name_en`, `birthdate`, `position`, `department`, `license_no`, `phone`, `email`, `username`, `password_hash`, `account_type`, `account_detail`, `expire_date`, `declaration_accept`) VALUES ('$id_card', '$name_th', '$name_en', '$birthdate', '$position', '$department', '$license_no', '$phone', '$email', '$username', '$password', '$account_type', '$account_detail_db', '$account_expire_date', 1)";
         $result = mysqli_query($connection, $query);
         if ($result) {
             echo "บันทึกข้อมูลเรียบร้อยแล้ว";

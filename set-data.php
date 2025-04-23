@@ -16,7 +16,7 @@ if (isset($_POST["function_set"])) {
 
         if ($password != $repassword) {
             $_SESSION["error_message"] = "กรุณากรอกรหัสผ่านให้ตรงกัน";
-            // header("location: ./set-account-data.php");
+            header("location: ./set-account-data.php");
             echo $password . " : " . $repassword; 
         } else {
             header("location: ./confirm.php");
