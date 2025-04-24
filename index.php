@@ -29,12 +29,12 @@ if (isset($_SESSION["private_data"])) {
                 <h1 class="text-success">
                     คำขอใหม่
                 </h1>
-                <label class="text-secondary">
+                <label class="text-secondary text-center">
                     แบบฟอร์มคำขอมีบัญชีผู้ใช้งานระบบ HOSXP โรงพยาบาลนางรอง จ.บุรีรัมย์
                 </label>
             </div>
 
-            <div class="flex gap-2 items-center justify-center my-2">
+            <div class="flex gap-2 items-center justify-center my-2 max-lg:hidden">
                 <div class="flex flex-col items-center">
                     <i class="bi bi-person-vcard fs-3 text-danger"></i>
                     <label class="text-danger">ข้อมูลส่วนตัว</label>
@@ -56,7 +56,7 @@ if (isset($_SESSION["private_data"])) {
                 </div>
             </div>
             <form action="/system_req/set-data.php" class="flex items-center flex-col" method="post">
-                <div class="flex gap-3 mt-4 w-1/2">
+                <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full">
                     <i class="bi bi-person-check fs-3 text-primary"></i>
                     <div class="card w-full">
                         <div class="card-header">
@@ -132,14 +132,14 @@ if (isset($_SESSION["private_data"])) {
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-3 mt-4 w-1/2">
+                <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full">
                     <i class="bi bi-geo-alt-fill fs-3 text-danger"></i>
-                    <div class="card">
+                    <div class="card max-lg:w-full">
                         <div class="card-header">
                             <div class="text-center">ข้อมูลอาชีพ</div>
                         </div>
                         <div class="card-body">
-                            <div class="grid grid-cols-3 gap-2">
+                            <div class="grid grid-cols-3 gap-2 max-lg:grid-cols-1">
                                 <div class="flex flex-col">
                                     <label class="flex gap-1">ตำแหน่ง <label class="text-red-500">*</label></label>
                                     <input type="text" name="position" value="<?php if ($data !== []) {
@@ -165,14 +165,14 @@ if (isset($_SESSION["private_data"])) {
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-3 mt-4 w-1/2">
+                <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full">
                     <i class="bi bi-person-lines-fill fs-3 text-purple-500"></i>
                     <div class="card w-full">
                         <div class="card-header">
                             <div class="text-center">ข้อมูลติดต่อ</div>
                         </div>
                         <div class="card-body">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 max-lg:grid-cols-1">
                                 <div class="flex flex-col">
                                     <label class="flex gap-1">เบอร์โทร <label class="text-red-500">*</label></label>
                                     <input type="text" name="phone" value="<?php if ($data !== []) {
@@ -192,7 +192,7 @@ if (isset($_SESSION["private_data"])) {
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-3 gap-2">
+                <div class="flex justify-center mt-3 gap-2 max-lg:mb-5">
                     <button class="btn btn-warning" disabled type="button">
                         ย้อนกลับ
                     </button>

@@ -37,13 +37,13 @@ if (isset($_SESSION["account_detail"])) {
             <h1 class="text-success">
                 คำขอใหม่
             </h1>
-            <label class="text-secondary">
+            <label class="text-secondary text-center">
                 แบบฟอร์มคำขอมีบัญชีผู้ใช้งานระบบ HOSXP โรงพยาบาลนางรอง จ.บุรีรัมย์
             </label>
         </div>
 
 
-        <div class="flex gap-2 items-center justify-center my-2">
+        <div class="flex gap-2 items-center justify-center my-2 max-lg:hidden">
             <a style="text-decoration: none;" href="/system_req" class="flex flex-col items-center">
                 <i class="bi bi-person-vcard fs-3 text-success"></i>
                 <label class="text-success">ข้อมูลส่วนตัว</label>
@@ -66,7 +66,7 @@ if (isset($_SESSION["account_detail"])) {
         </div>
 
         <form action="/system_req/set-data.php" class="flex items-center flex-col" method="post">
-            <div class="flex gap-3 mt-4 w-1/2">
+            <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full max-lg:px-2 max-lg:flex-col">
                 <div class="w-full">
                     <div class="card">
                         <div class="card-header">
@@ -150,7 +150,7 @@ if (isset($_SESSION["account_detail"])) {
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center mt-3 gap-2">
+            <div class="flex justify-center mt-3 gap-2 max-lg:mb-4">
                 <a href="/system_req" style="text-decoration: none;" class="btn btn-warning" disabled type="button">
                     ย้อนกลับ
                 </a>

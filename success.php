@@ -30,13 +30,13 @@ if (isset($_SESSION["success_data"])) {
             <h1 class="text-success">
                 คำขอใหม่
             </h1>
-            <label class="text-secondary">
+            <label class="text-secondary text-center">
                 แบบฟอร์มคำขอมีบัญชีผู้ใช้งานระบบ HOSXP โรงพยาบาลนางรอง จ.บุรีรัมย์
             </label>
         </div>
 
 
-        <div class="flex gap-2 items-center justify-center my-2">
+        <div class="flex gap-2 items-center justify-center my-2 max-lg:hidden">
             <div class="flex flex-col items-center">
                 <i class="bi bi-person-vcard fs-3 text-success"></i>
                 <label class="text-success">ข้อมูลส่วนตัว</label>
@@ -59,7 +59,7 @@ if (isset($_SESSION["success_data"])) {
         </div>
 
         <form action="/system_req/set-data.php" class="flex items-center flex-col" method="post">
-            <div class="flex gap-3 mt-4 w-1/2">
+            <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full max-lg:px-2">
                 <div class="card w-full">
                     <div class="card-body h-96 flex items-center justify-center">
                         <div class="flex flex-col items-center">
@@ -70,11 +70,12 @@ if (isset($_SESSION["success_data"])) {
                             <a href="./dowload.php" style="text-decoration: none;" class="btn btn-outline-primary my-2">
                                 <i class="bi bi-cloud-download"></i> ดาวโหลดไฟล์
                             </a>
-                            <div class="flex gap-1 items-center">
+                            <div class="flex items-center gap-2">
                                 <label class="text-gray-400">
                                     สามารถดูสถานะคำขอได้
                                 </label>
-                                <a href="./check_status.php" class="text-primary"> กดที่นี่</a>
+
+                                <a href="./check_status.php?id_card=<?php echo $success_data['id_card']; ?>" class="text-primary underline"> กดที่นี่</a>
                             </div>
                         </div>
                     </div>

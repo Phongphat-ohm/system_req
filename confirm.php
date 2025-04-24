@@ -30,12 +30,12 @@ $account_detail = $_SESSION["account_detail"];
                 <h1 class="text-success">
                     คำขอใหม่
                 </h1>
-                <label class="text-secondary">
+                <label class="text-secondary text-center">
                     แบบฟอร์มคำขอมีบัญชีผู้ใช้งานระบบ HOSXP โรงพยาบาลนางรอง จ.บุรีรัมย์
                 </label>
             </div>
 
-            <div class="flex gap-2 items-center justify-center my-2">
+            <div class="flex gap-2 items-center justify-center my-2 max-lg:hidden">
                 <a href="/system_req" style="text-decoration: none;" class="flex flex-col items-center">
                     <i class="bi bi-person-vcard fs-3 text-success"></i>
                     <label class="text-success">ข้อมูลส่วนตัว</label>
@@ -58,7 +58,7 @@ $account_detail = $_SESSION["account_detail"];
                 </div>
             </div>
             <div class="flex flex-col items-center">
-                <div class="flex gap-3 mt-4 w-1/2">
+                <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full">
                     <i class="bi bi-person-check fs-3 text-primary"></i>
                     <div class="card w-full">
                         <div class="card-header">
@@ -110,14 +110,14 @@ $account_detail = $_SESSION["account_detail"];
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-3 mt-4 w-1/2">
+                <div class="flex gap-3 mt-4 w-1/2 max-lg:w-full">
                     <i class="bi bi-fingerprint fs-3 text-cyan-800"></i>
                     <div class="card w-full">
                         <div class="card-header">
                             ข้อมูลการเข้าสู่ระบบ
                         </div>
                         <div class="card-body">
-                            <div class="flex gap-2">
+                            <div class="flex gap-2 max-lg:flex-col">
                                 <table class="table table-striped">
                                     <tbody>
                                         <tr>

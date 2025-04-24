@@ -24,6 +24,26 @@ if (isset($_POST["submit"]) && $_POST["submit"] === "check_status") {
     }
 }
 
+if(isset($_GET["id_card"])) {
+    $conn = mysqli_connect("localhost", "root", "", "hospital_wifi");
+
+    if (mysqli_connect_errno()) {
+        $error_message = "มีบางอย่างผิดพลาดในการเชื่อมต่อฐานข้อมูล: " . mysqli_connect_error();
+    } else {
+        $id_card = mysqli_real_escape_string($conn, $_GET["id_card"]);
+        $query = "SELECT * FROM wifi_requests WHERE id_card='$id_card'";
+        $result = mysqli_query($conn, $query);
+
+        if (!$result || mysqli_num_rows($result) == 0) {
+            $error_message = "ไม่พบข้อมูลคำขอของคุณ";
+        } else {
+            $success_data = mysqli_fetch_assoc($result);
+        }
+
+        mysqli_close($conn);
+    }
+}
+
 function format_thai_datetime($datetime_str)
 {
     $months_th = [
@@ -130,34 +150,70 @@ function format_thai_datetime($datetime_str)
                                 </tr>
                             </tbody>
                         </table>
+                        <a href="./dowload.php?id_card=<?php echo $success_data["id_card"]; ?>" class="btn btn-success mt-3">
+                            <i class="bi bi-cloud-arrow-down-fill"></i> ดาวโหลดเอกสารคำขอ
+                        </a>
                         <hr>
                         <h5 class="text-success">
-                            การอณุญาติ
+                            การอณุมัติการใช้งาน
                         </h5>
                         <table class="w-full">
                             <tbody>
                                 <tr>
                                     <th class="border p-2 w-52">
-                                        การอณุญาติจากผู้บังคับบัญชา
+                                        จากผู้บังคับบัญชา
                                     </th>
                                     <td class="border p-2">
-                                        <?= htmlspecialchars($success_data["name_th"] ?? "-") ?>
+                                        <?php if ($success_data["status_leader"] !== "รอดำเนินการ"): ?>
+                                            <?= format_thai_datetime($success_data["status_leader"]); ?>
+                                        <?php else: ?>
+                                            <div class="flex gap-2 items-center">
+                                                <div class="spinner-border spinner-border-sm text-warning" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                                <div class="text-warning">
+                                                    กำลังดำเนินการ
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="border p-2 w-52">
-                                        สถานะจาก IT
+                                        จากผู้อำนวยการ
                                     </th>
                                     <td class="border p-2">
-                                        <?= htmlspecialchars($success_data["id_card"] ?? "-") ?>
+                                        <?php if ($success_data["status_director"] !== "รอดำเนินการ"): ?>
+                                            <?= format_thai_datetime($success_data["status_director"]); ?>
+                                        <?php else: ?>
+                                            <div class="flex gap-2 items-center">
+                                                <div class="spinner-border spinner-border-sm text-warning" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                                <div class="text-warning">
+                                                    กำลังดำเนินการ
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="border p-2 w-52">
-                                        การอณุญาติจากผู้อำนวยการ
+                                        จากผู้ดูแลระบบ
                                     </th>
                                     <td class="border p-2">
-                                        <?= isset($success_data["created_at"]) ? format_thai_datetime($success_data["created_at"]) : "-" ?>
+                                        <?php if ($success_data["status_it"] !== "รอดำเนินการ"): ?>
+                                            <?= format_thai_datetime($success_data["status_it"]); ?>
+                                        <?php else: ?>
+                                            <div class="flex gap-2 items-center">
+                                                <div class="spinner-border spinner-border-sm text-warning" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                                <div class="text-warning">
+                                                    กำลังดำเนินการ
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                             </tbody>
