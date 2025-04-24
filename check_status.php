@@ -90,9 +90,9 @@ function format_thai_datetime($datetime_str)
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-light text-dark">
+<body>
 
-    <div class="min-vh-100 d-flex flex-column align-items-center pt-5">
+    <div class="min-vh-100 bg-gray-100 w-full d-flex flex-column align-items-center pt-5">
         <div class="container">
             <?php if ($error_message !== ""): ?>
                 <div class="alert alert-danger" role="alert">
@@ -104,7 +104,7 @@ function format_thai_datetime($datetime_str)
         <h1 class="text-success">ตรวจสอบสถานะคำขอ</h1>
         <label class="text-muted">ตรวจสอบสถานะคำขอมีบัญชีผู้ใช้โปรแกรม HOSXP</label>
 
-        <div class="w-50 mt-4">
+        <div class="w-1/2 max-lg:w-full max-lg:px-2 mt-4">
             <form action="./check_status.php" method="post">
                 <label for="id_card">เลขบัตรประจำตัวประชาชน</label>
                 <div class="input-group mb-3">
