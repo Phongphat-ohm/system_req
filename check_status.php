@@ -24,7 +24,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] === "check_status") {
     }
 }
 
-if(isset($_GET["id_card"])) {
+if (isset($_GET["id_card"])) {
     $conn = mysqli_connect("localhost", "root", "", "hospital_wifi");
 
     if (mysqli_connect_errno()) {
@@ -108,8 +108,8 @@ function format_thai_datetime($datetime_str)
             <form action="./check_status.php" method="post">
                 <label for="id_card">เลขบัตรประจำตัวประชาชน</label>
                 <div class="input-group mb-3">
-                    <input value="<?= htmlspecialchars($id_card) ?>" type="text" name="id_card" id="id_card" required
-                        class="form-control" placeholder="กรอกรหัสบัตรประชาชน">
+                    <input autocomplete="off" value="<?= htmlspecialchars($id_card) ?>" type="text" name="id_card"
+                        id="id_card" required class="form-control" placeholder="กรอกรหัสบัตรประชาชน">
                     <button name="submit" value="check_status" class="btn btn-outline-primary" type="submit">
                         <i class="bi bi-search"></i> ค้นหา
                     </button>
@@ -124,6 +124,14 @@ function format_thai_datetime($datetime_str)
                         </h5>
                         <table class="w-full">
                             <tbody>
+                                <tr>
+                                    <th class="border p-2 w-52">
+                                        รหัสคำขอ
+                                    </th>
+                                    <td class="border p-2">
+                                        <?= htmlspecialchars($success_data["id"] ?? "-") ?>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <th class="border p-2 w-52">
                                         ชื่อ
@@ -150,7 +158,8 @@ function format_thai_datetime($datetime_str)
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="./dowload.php?id_card=<?php echo $success_data["id_card"]; ?>" class="btn btn-success mt-3">
+                        <a href="./dowload.php?id_card=<?php echo $success_data["id_card"]; ?>"
+                            class="btn btn-success mt-3">
                             <i class="bi bi-cloud-arrow-down-fill"></i> ดาวโหลดเอกสารคำขอ
                         </a>
                         <hr>
